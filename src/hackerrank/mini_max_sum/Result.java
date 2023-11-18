@@ -2,7 +2,7 @@ package hackerrank.mini_max_sum;
 
 import java.util.List;
 
-public class Result {
+class Result {
 
     public static void miniMaxSum(List<Integer> arr) {
         Integer min = arr.get(0);
