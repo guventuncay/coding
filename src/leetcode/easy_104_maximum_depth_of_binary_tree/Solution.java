@@ -2,8 +2,7 @@ package leetcode.easy_104_maximum_depth_of_binary_tree;
 
 import leetcode.util.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Definition for a binary tree node.
@@ -60,4 +59,23 @@ class Solution {
         return count;
     }
 
+    // iterative dfs
+    public static int maxDepth3(TreeNode root) {
+        var stack = new Stack<Map.Entry<TreeNode, Integer>>();
+        stack.add(Map.entry(root, 1));
+
+        int max = 0;
+        while (!stack.isEmpty()) {
+            var pop = stack.pop();
+            TreeNode node = pop.getKey();
+            Integer depth = pop.getValue();
+
+            if (node != null) {
+                max = Math.max(max, depth);
+                stack.add(new AbstractMap.SimpleEntry<>(node.left, depth + 1));
+                stack.add(new AbstractMap.SimpleEntry<>(node.right, depth + 1));
+            }
+        }
+        return max;
+    }
 }
